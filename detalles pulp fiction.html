@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookfilm</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   
+</head>
+<body>
+     <header>
+        <img class="logo" src="img/logo2.png" >
+        <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="PELICULAS.html">Peliculas</a></li>
+                <li><a href="SERIES.html">Series</a></li>
+                <li><a href="#">libros</a></li>
+                    <li><a href="contacto.html">Contactanos</a></li>
+                    <li><a href="FAVORITOS.html">favoritos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+        <h2 class="titulo">Pulp Fiction</h2>
+          <div class="multimedia">
+        <img src="img/pulp fiction.jpg" alt="cover" class="cover">
+        <video muted controls class="trailer"> 
+       <source src="video/trailer3.mp4" type="video/mp4">
+       </video>
+       </div>
+        <p class="sinopsis">Las vidas de dos mafiosos, un boxeador, la esposa de un gánster y un par de bandidos se entrelazan en cuatro historias de violencia y redención.</p>
+
+        <div>
+            <ul>
+                <li class="calificacion"><span>calificacion: </span>4 estrellas</li>
+            </ul>
+            <ul>
+                <li class="calificacion"><span>duracion: </span>2h 34min</li>
+                <li class="año"><span>año de lanzamiento: </span>1994</li>
+            </ul>
+
+<button onclick="agregarAFavoritos()" class="btn-favorito"> Agregar a Favoritos<i class="bi bi-heart"></i></button>
+
+
+        </div>
+        <div class="info">
+        <h4>director</h4>
+          <li><a href="#">Quentin Tarantino</a></li>
+         
+          <h4>guinista</h4>
+          <li><a href="#">Quentin Tarantino</a></li>
+          <li><a href="#">Roger Avary</a></li>
+
+         <h4>elenco</h4>
+          <li><a href="#">John Travolta</a></li>
+          <li><a href="#">Uma Thurman</a></li>
+          <li><a href="#">Samuel L. Jackson</a></li>
+        </div>
+       
+        <div class="generos">
+        <h3>Generos</h3>
+       <li><a href="DRAMA.html">drama</a></li>
+        <li><a href="COMEDIA.html">comedia</a></li>
+      
+       </div>
+     
+       
+       </section>
+
+    </main>
+  
+
+<div class="seccion-comentarios-A">
+
+<h2>Iniciar sesión o registrarse</h2>
+<div id="login-register">
+  <input type="text" id="username" placeholder="Usuario" />
+  <input type="password" id="password" placeholder="Contraseña" />
+  <button onclick="login()">Iniciar sesión</button>
+  <button onclick="register()">Registrarse</button>
+</div>
+
+<div id="zona-usuario" style="display: none;">
+  <p>Hola, <span id="usuario-activo"></span> <button onclick="cerrarSesion()">Cerrar sesión</button></p>
+</div>
+
+<h3>Comentarios</h3>
+<textarea id="comentario"></textarea>
+<button onclick="guardarComentario()">Publicar</button>
+<div id="comentarios"></div>
+
+<script>
+  const usuariosKey = "usuarios";
+  const sesionKey = "usuarioActivo";
+  const comentariosKey = "comentarios_" + window.location.pathname;
+
+  function obtenerUsuarios() {
+    return JSON.parse(localStorage.getItem(usuariosKey) || "[]");
+  }
+
+  function guardarUsuarios(lista) {
+    localStorage.setItem(usuariosKey, JSON.stringify(lista));
+  }
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const usuarios = obtenerUsuarios();
+    const existe = usuarios.find(u => u.nombre === user && u.clave === pass);
+    if (existe) {
+      localStorage.setItem(sesionKey, user);
+      mostrarZonaUsuario();
+    } else {
+      alert("Usuario o contraseña incorrectos.");
+    }
+  }
+
+  function register() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (!user || !pass) return alert("Completa los campos.");
+    let usuarios = obtenerUsuarios();
+    if (usuarios.find(u => u.nombre === user)) {
+      return alert("Ese usuario ya existe.");
+    }
+    usuarios.push({ nombre: user, clave: pass });
+    guardarUsuarios(usuarios);
+    alert("Registro exitoso. Ahora inicia sesión.");
+  }
+
+  function cerrarSesion() {
+    localStorage.removeItem(sesionKey);
+    location.reload();
+  }
+
+  function mostrarZonaUsuario() {
+    const usuario = localStorage.getItem(sesionKey);
+    if (usuario) {
+      document.getElementById("login-register").style.display = "none";
+      document.getElementById("zona-usuario").style.display = "block";
+      document.getElementById("usuario-activo").innerText = usuario;
+    }
+    mostrarComentarios();
+  }
+
+  function guardarComentario() {
+    const texto = document.getElementById("comentario").value;
+    const user = localStorage.getItem(sesionKey);
+    if (!user) return alert("Debes iniciar sesión para comentar.");
+    if (!texto.trim()) return;
+
+    let comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    comentarios.push({ autor: user, texto });
+    localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+    document.getElementById("comentario").value = "";
+    mostrarComentarios();
+  }
+
+  function mostrarComentarios() {
+    const comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    const contenedor = document.getElementById("comentarios");
+    contenedor.innerHTML = "";
+    const usuario = localStorage.getItem(sesionKey);
+    comentarios.forEach((c, i) => {
+      const div = document.createElement("div");
+      div.className = "comentario";
+      div.innerHTML = `<strong>${c.autor}</strong>: ${c.texto}`;
+      if (c.autor === usuario) {
+        const btn = document.createElement("button");
+        btn.textContent = "Eliminar";
+        btn.onclick = () => eliminarComentario(i);
+        div.appendChild(btn);
+      }
+      contenedor.appendChild(div);
+    });
+  }
+
+  function eliminarComentario(index) {
+    let comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    comentarios.splice(index, 1);
+    localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+    mostrarComentarios();
+  }
+
+  mostrarZonaUsuario();
+</script>
+</div>
+
+
+<script>
+  const sesion= "usuarioActivo";
+
+  function favoritosKey(usuario) {
+    return `favoritos_${usuario}`;
+  }
+
+  function obtenerFavoritos(usuario) {
+    return JSON.parse(localStorage.getItem(favoritosKey(usuario)) || "[]");
+  }
+
+  function guardarFavoritos(usuario, lista) {
+    localStorage.setItem(favoritosKey(usuario), JSON.stringify(lista));
+  }
+
+  function agregarAFavoritos() {
+    const usuario = localStorage.getItem(sesionKey);
+    if (!usuario) {
+      alert("Debes iniciar sesión para agregar a favoritos.");
+      return;
+    }
+
+    const titulo = "Pulp Fiction"; // 👈 Cambia esto por el título de la película actual
+    let favoritos = obtenerFavoritos(usuario);
+
+    // Verificar si ya está en favoritos
+    if (favoritos.find(p => p.id === titulo)) {
+      alert("Ya está en favoritos.");
+      return;
+    }
+
+    const pelicula = {
+      id: titulo, 
+      titulo: titulo
+    };
+
+    favoritos.push(pelicula);
+    guardarFavoritos(usuario, favoritos);
+    alert("Agregado a favoritos.");
+  }
+</script>
+
+     <footer></footer>
+   
+   
+    <script src="java.js"></script>
+</body>
+</html>

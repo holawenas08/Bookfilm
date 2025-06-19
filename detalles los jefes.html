@@ -1,0 +1,190 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookfilm</title>
+    <link rel="stylesheet" href="estilo.css">
+   
+</head>
+<body>
+    <header>
+        <h1>Bookfilm</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="peliculas.html">peliculas</a></li>
+                <li><a href="series.html">series</a></li>
+                <li><a href="libros.html">libros</a></li>
+            </ul>
+            <form method="get" action="index.html">
+                <input type="search" name="buscar" placeholder="buscar peliculas, series o libros">
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+        <h2>Los Jefes</h2>
+        <img src="img/los jefes.jpg" alt="cover">
+        <p>Un estudiante universitario acepta comprar hierba y se ve involucrado en el mundo de las drogas.</p>
+        <div>
+            <ul>
+                <li><span>calificacion: </span>3 estrellas</li>
+            </ul>
+            <ul>
+                <li><span>duracion</span>1h 23min</li>
+                <li><span>año de lanzamiento</span>2015</li>
+            </ul>
+        </div>
+        <div>
+        <h4>director</h4>
+          <li><a href="#">Chiva Rodriguez</a></li>
+         
+          <h4>guinista</h4>
+          <li><a href="#">Babo</a></li>
+         
+
+         <h4>elenco</h4>
+          <li><a href="#">Babo</a></li>
+          <li><a href="#">Alejandro Garza Cabral</a></li>
+          <li><a href="#">millonario</a></li>
+        </div>
+       
+        <div>
+        <h3>Generos</h3>
+       <li><a href="#">drama</a></li>
+        <li><a href="#">comedia</a></li>
+         <li><a href="#">aventura</a></li>
+      
+       </div>
+     
+       
+       </section>
+
+    </main>
+    <footer>
+
+
+   
+
+ <h2>Iniciar sesión o registrarse</h2>
+<div id="login-register">
+  <input type="text" id="username" placeholder="Usuario" />
+  <input type="password" id="password" placeholder="Contraseña" />
+  <button onclick="login()">Iniciar sesión</button>
+  <button onclick="register()">Registrarse</button>
+</div>
+
+<div id="zona-usuario" style="display: none;">
+  <p>Hola, <span id="usuario-activo"></span> <button onclick="cerrarSesion()">Cerrar sesión</button></p>
+</div>
+
+<h3>Comentarios</h3>
+<textarea id="comentario"></textarea>
+<button onclick="guardarComentario()">Publicar</button>
+<div id="comentarios"></div>
+
+<script>
+  const usuariosKey = "usuarios";
+  const sesionKey = "usuarioActivo";
+  const comentariosKey = "comentarios_" + window.location.pathname;
+
+  function obtenerUsuarios() {
+    return JSON.parse(localStorage.getItem(usuariosKey) || "[]");
+  }
+
+  function guardarUsuarios(lista) {
+    localStorage.setItem(usuariosKey, JSON.stringify(lista));
+  }
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const usuarios = obtenerUsuarios();
+    const existe = usuarios.find(u => u.nombre === user && u.clave === pass);
+    if (existe) {
+      localStorage.setItem(sesionKey, user);
+      mostrarZonaUsuario();
+    } else {
+      alert("Usuario o contraseña incorrectos.");
+    }
+  }
+
+  function register() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (!user || !pass) return alert("Completa los campos.");
+    let usuarios = obtenerUsuarios();
+    if (usuarios.find(u => u.nombre === user)) {
+      return alert("Ese usuario ya existe.");
+    }
+    usuarios.push({ nombre: user, clave: pass });
+    guardarUsuarios(usuarios);
+    alert("Registro exitoso. Ahora inicia sesión.");
+  }
+
+  function cerrarSesion() {
+    localStorage.removeItem(sesionKey);
+    location.reload();
+  }
+
+  function mostrarZonaUsuario() {
+    const usuario = localStorage.getItem(sesionKey);
+    if (usuario) {
+      document.getElementById("login-register").style.display = "none";
+      document.getElementById("zona-usuario").style.display = "block";
+      document.getElementById("usuario-activo").innerText = usuario;
+    }
+    mostrarComentarios();
+  }
+
+  function guardarComentario() {
+    const texto = document.getElementById("comentario").value;
+    const user = localStorage.getItem(sesionKey);
+    if (!user) return alert("Debes iniciar sesión para comentar.");
+    if (!texto.trim()) return;
+
+    let comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    comentarios.push({ autor: user, texto });
+    localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+    document.getElementById("comentario").value = "";
+    mostrarComentarios();
+  }
+
+  function mostrarComentarios() {
+    const comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    const contenedor = document.getElementById("comentarios");
+    contenedor.innerHTML = "";
+    const usuario = localStorage.getItem(sesionKey);
+    comentarios.forEach((c, i) => {
+      const div = document.createElement("div");
+      div.className = "comentario";
+      div.innerHTML = `<strong>${c.autor}</strong>: ${c.texto}`;
+      if (c.autor === usuario) {
+        const btn = document.createElement("button");
+        btn.textContent = "Eliminar";
+        btn.onclick = () => eliminarComentario(i);
+        div.appendChild(btn);
+      }
+      contenedor.appendChild(div);
+    });
+  }
+
+  function eliminarComentario(index) {
+    let comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    comentarios.splice(index, 1);
+    localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+    mostrarComentarios();
+  }
+
+  mostrarZonaUsuario();
+</script>
+
+
+        <p>quejas o sujerencias Bookfilm@gmail.com </p>
+    </footer>
+   
+   
+    <script src="java.js"></script>
+</body>
+</html>

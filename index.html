@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookfilm</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   
+</head>
+
+    <header>
+        <img class="logo" src="img/logo2.png" >
+        <button id="abrir" class="abrir-menu"><i class="bi bi-list"></i></button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar"><i class="bi bi-x"></i></button>
+            <ul class="nav-list">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="PELICULAS.html">Peliculas</a></li>
+                <li><a href="SERIES.html">Series</a></li>
+                <li><a href="LIBROS.html">libros</a></li>
+                <li><a href="contacto.html">Contactanos</a></li>
+                <li><a href="FAVORITOS.html">favoritos</a></li>
+               <button id="abrirModalLogin" class="boton-login">Iniciar sesión / Registro</button>
+               <button id="btnCerrarSesion" class="boton-login"  style="display: none;" onclick="cerrarSesion()">Cerrar sesión</button>
+            </ul>
+        </nav>
+    </header>
+
+<button id="volver" class="volver">volver arriba</button>
+
+<body>
+
+
+<div class="publicidad" id="pub-0">
+  <a href="https://www.disneyplus.com/es-us">
+    <img src="img/disney plus.png" alt="">
+  </a>
+  <p class="eslogan">Siéntete como en casa con Disney+</p>
+  <button onclick="cerrarPublicidad()"><i class="bi bi-x"></i></button>
+</div>
+
+
+<div class="publicidad oculto" id="pub-1">
+  <a href="https://www.netflix.com/">
+    <img src="img/netflix.jpg" alt="">
+  </a>
+  <p class="eslogan">Lo mejor de Netflix en un solo clic</p>
+  <button onclick="cerrarPublicidad()"><i class="bi bi-x"></i></button>
+</div>
+
+
+<div class="publicidad oculto" id="pub-2">
+  <a href="https://www.hbomax.com/">
+    <img src="img/hbo.webp" alt="">
+  </a>
+  <p class="eslogan">HBO Max: Donde vive la calidad</p>
+  <button onclick="cerrarPublicidad()"><i class="bi bi-x"></i></button>
+</div>
+
+
+
+<div class="publicidad oculto" id="pub-3">
+  <a href="https://www.hbomax.com/">
+    <img src="img/logop1.jpeg" alt="">
+  </a>
+  <p class="eslogan">Limpieza que se nota,
+Brillo que impresiona</p>
+  <button onclick="cerrarPublicidad()"><i class="bi bi-x"></i></button>
+</div>
+
+
+
+
+
+
+<section class="populares">
+    <h2>Populares</h2>
+    <hr>
+
+   <div class="box-conteiner-1">
+        
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles shrek.html">
+                    <h3 class="titulo-cover">pelicula</h3>
+                    <img src="img/shrek.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.9</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles juego de tronos.html">
+                    <h3 class="titulo-cover">serie</h3>
+                    <img src="img/juego de tronos.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.6</h3></a>
+                
+
+            </div>
+        </div>
+
+             <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles invencible.html">
+                    <h3 class="titulo-cover">serie</h3>
+                    <img src="img/invencible.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.4</h3></a>
+                
+
+            </div>
+        </div>
+
+            <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles ADS.html">
+                    <h3 class="titulo-cover">libro</h3>
+                    <img src="img/alas de s.webp" alt="cover"class="cover">
+                    <h3>estrellas 3.4</h3></a>
+                
+
+            </div>
+        </div>
+
+ <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles el padrino.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/el padrino.jpg" alt="cover" class="cover">
+                    <h3>estrellas 4.6</h3></a>
+                
+
+            </div>
+        </div>
+
+         <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles coraline.html">
+                    <h3 class="titulo-cover">libro</h3>
+                    <img src="img/coraline.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.6</h3></a>
+                
+
+            </div>
+        </div>
+
+         <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles spiderman.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/spiderman.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.2</h3></a>
+                
+
+            </div>
+        </div>
+
+         <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles lalaland.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/lalaland.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.2</h3></a>
+                
+
+            </div>
+        </div>
+
+         <div class="box1">
+            
+                <div class="content">
+                     <a href="detalels good place.html">
+                    <h3 class="titulo-cover">serie</h3>
+                    <img src="img/good place.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.1</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles John Wick.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/jonh wick.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1 hidden-box-1">
+  <div class="content">
+    <a href="detalles el oso.html">
+      <h3 class="titulo-cover">serie</h3>
+      <img src="img/el oso.jpg" alt="cover"class="cover">
+      <h3>estrellas 4.3</h3>
+    </a>
+  </div>
+</div>
+
+<div class="box1 hidden-box-1">
+  <div class="content">
+    <a href="el principito.html">
+      <h3 class="titulo-cover">Libro</h3>
+      <img src="img/el principito.jpg" alt="cover"class="cover">
+      <h3>estrellas 4</h3>
+    </a>
+  </div>
+</div>
+
+<div class="box1 hidden-box-1">
+  <div class="content">
+    <a href="detalles it.html">
+      <h3 class="titulo-cover">Libro</h3>
+      <img src="img/it.jpg" alt="cover" class="cover">
+      <h3>estrellas 3.9</h3>
+    </a>
+  </div>
+</div>
+
+<div class="box1 hidden-box-1">
+  <div class="content">
+    <a href="detalles el resplandor.html">
+      <h3 class="titulo-cover">Pelicula</h3>
+      <img src="img/el resplandor.jpg" alt="cover"class="cover">
+      <h3>estrellas 4</h3>
+    </a>
+  </div>
+</div>
+
+<div class="box1 hidden-box-1">
+  <div class="content">
+    <a href="detalles BCS.htm">
+      <h3 class="titulo-cover">serie</h3>
+      <img src="img/serie1.jpg" alt="cover"class="cover">
+      <h3>estrellas 4.8</h3>
+    </a>
+  </div>
+</div>
+        
+
+    </div>
+
+ 
+
+  <div class="load-more-1" id="load-more-1">ver mas</div>
+
+   
+</section >
+
+<section class="Recientes" >
+
+    <h2>Recientes</h2>
+    <hr>
+
+   <div class="box-conteiner-2">
+        
+        <div class="box2">
+            
+                <div class="content">
+                     <a href="detalles eternauta.html">
+                    <h3 class="titulo-cover">serie</h3>
+                    <img src="img/eternauta.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.7</h3></a>
+                
+
+            </div>
+        </div>
+
+                <div class="box2">
+            
+                <div class="content">
+                     <a href="detalles robot.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/robot.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.1</h3></a>
+                
+
+            </div>
+        </div>
+
+                <div class="box2">
+            
+                <div class="content">
+                     <a href="detalles thunderbolts.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/thunderbolt.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.4</h3></a>
+                
+
+            </div>
+        </div>
+
+                <div class="box2">
+            
+                <div class="content">
+                     <a href="detalles fallout.html">
+                    <h3 class="titulo-cover">serie</h3>
+                    <img src="img/fallout.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles juegos del hambre.html">
+                    <h3 class="titulo-cover">libro</h3>
+                    <img src="img/juegos del hambre5.webp" alt="cover"class="cover">
+                    <h3>estrellas </h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles destino final.html">
+                    <h3 class="titulo-cover">Pelicula</h3>
+                    <img src="img/destinno final.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.5</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles biblioteca de la media noche.html">
+                    <h3 class="titulo-cover">libro</h3>
+                    <img src="img/biblioteca de la media noche.jpg" alt="cover"class="cover">
+                    <h3>estrellas 3.6</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles invencible.html">
+                    <h3 class="titulo-cover">serie</h3>
+                    <img src="img/invencible.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.4</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles todo en todas.html">
+                    <h3 class="titulo-cover">pelicula</h3>
+                    <img src="img/todo en todas partes.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1">
+            
+                <div class="content">
+                     <a href="detalles peacemaker.html">
+                    <h3 class="titulo-cover">pelicula</h3>
+                    <img src="img/peacemaker.jpg" alt="cover"class="cover">
+                    <h3>estrellas 4.1</h3></a>
+                
+
+            </div>
+        </div>
+
+        <div class="box1 hidden-box-2">
+  <div class="content">
+    <a href="detalles el arte de.html">
+      <h3 class="titulo-cover">libro</h3>
+      <img src="img/el arte de ser nosostros.webp" alt="cover"class="cover">
+      <h3>estrellas 3.5</h3>
+    </a>
+  </div>
+</div>
+
+        
+
+    </div>
+
+    <div class="load-more-2" id="load-more-2">ver mas</div>
+
+
+   
+</section>
+   
+   
+  
+
+    
+    
+<div class="layout">
+  <main class="contenido">
+    <div id="grid"></div>
+  </main>
+
+  <aside class="filtros" id="filtros">
+    <h2>Buscar por:</h2>
+    <div>
+      <h3>Géneros</h3>
+      <ul class="generos">
+        <li><a href="ACCION.html">Acción</a></li>
+        <li><a href="AVENTURA.html">Aventura</a></li>
+        <li><a href="ROMANCE.HTML">Romance</a></li>
+        <li><a href="COMEDIA.HTML">Comedia</a></li>
+        <li><a href="TERROR.html">Terror</a></li>
+        <li><a href="CF.HTML">Ciencia ficción</a></li>
+       
+        <li><a href="DRAMA.HTML">Drama</a></li>
+        <li><a href="FANTACIA.HTML">Fantasía</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+    </main>
+
+<div id="modalLogin" class="modal" style="display: none;">
+  <div class="modal-contenido">
+    <span id="cerrarModalLogin" class="cerrar">&times;</span>
+    <div class="seccion-comentarios-A">
+      <h2>Iniciar sesión o registrarse</h2>
+      <div id="login-register">
+        <input type="text" id="username" placeholder="Usuario" />
+        <input type="password" id="password" placeholder="Contraseña" />
+        <button onclick="login()">Iniciar sesión</button>
+        <button onclick="register()">Registrarse</button>
+      </div>
+      <div id="zona-usuario" style="display: none;">
+        <p>Hola, <span id="usuario-activo"></span> <button onclick="cerrarSesion()">Cerrar sesión</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+   <script>
+  const usuariosKey = "usuarios";
+  const sesionKey = "usuarioActivo";
+  const comentariosKey = "comentarios_" + window.location.pathname;
+
+  const modal = document.getElementById("modalLogin");
+  const btnAbrir = document.getElementById("abrirModalLogin");
+  const btnCerrar = document.getElementById("cerrarModalLogin");
+
+  btnAbrir.onclick = () => modal.style.display = "block";
+  btnCerrar.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
+
+  function obtenerUsuarios() {
+    return JSON.parse(localStorage.getItem(usuariosKey) || "[]");
+  }
+
+  function guardarUsuarios(lista) {
+    localStorage.setItem(usuariosKey, JSON.stringify(lista));
+  }
+
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const usuarios = obtenerUsuarios();
+    const existe = usuarios.find(u => u.nombre === user && u.clave === pass);
+    if (existe) {
+      localStorage.setItem(sesionKey, user);
+      mostrarZonaUsuario();
+      modal.style.display = "none";
+    } else {
+      alert("Usuario o contraseña incorrectos.");
+    }
+  }
+
+  function register() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (!user || !pass) return alert("Completa los campos.");
+    let usuarios = obtenerUsuarios();
+    if (usuarios.find(u => u.nombre === user)) {
+      return alert("Ese usuario ya existe.");
+    }
+    usuarios.push({ nombre: user, clave: pass });
+    guardarUsuarios(usuarios);
+    alert("Registro exitoso. Ahora inicia sesión.");
+  }
+
+  function cerrarSesion() {
+    localStorage.removeItem(sesionKey);
+    location.reload();
+  }
+
+  function mostrarZonaUsuario() {
+    const usuario = localStorage.getItem(sesionKey);
+    if (usuario) {
+      document.getElementById("login-register").style.display = "none";
+      document.getElementById("zona-usuario").style.display = "block";
+      document.getElementById("usuario-activo").innerText = usuario;
+    }
+    mostrarComentarios();
+  }
+
+  function guardarComentario() {
+    const texto = document.getElementById("comentario").value;
+    const user = localStorage.getItem(sesionKey);
+    if (!user) return alert("Debes iniciar sesión para comentar.");
+    if (!texto.trim()) return;
+    let comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    comentarios.push({ autor: user, texto });
+    localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+    document.getElementById("comentario").value = "";
+    mostrarComentarios();
+  }
+
+  function mostrarComentarios() {
+    const comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    const contenedor = document.getElementById("comentarios");
+    contenedor.innerHTML = "";
+    const usuario = localStorage.getItem(sesionKey);
+    comentarios.forEach((c, i) => {
+      const div = document.createElement("div");
+      div.className = "comentario";
+      div.innerHTML = `<strong>${c.autor}</strong>: ${c.texto}`;
+      if (c.autor === usuario) {
+        const btn = document.createElement("button");
+        btn.textContent = "Eliminar";
+        btn.onclick = () => eliminarComentario(i);
+        div.appendChild(btn);
+      }
+      contenedor.appendChild(div);
+    });
+  }
+
+  function eliminarComentario(index) {
+    let comentarios = JSON.parse(localStorage.getItem(comentariosKey) || "[]");
+    comentarios.splice(index, 1);
+    localStorage.setItem(comentariosKey, JSON.stringify(comentarios));
+    mostrarComentarios();
+  }
+
+  mostrarZonaUsuario();
+
+function mostrarZonaUsuario() {
+  const usuario = localStorage.getItem(sesionKey);
+  const loginRegister = document.getElementById("login-register");
+  const zonaUsuario = document.getElementById("zona-usuario");
+  const btnAbrir = document.getElementById("abrirModalLogin");
+  const btnCerrar = document.getElementById("btnCerrarSesion");
+
+  if (usuario) {
+    if (loginRegister) loginRegister.style.display = "none";
+    if (zonaUsuario) zonaUsuario.style.display = "block";
+
+    // Mostrar botón "Cerrar sesión", ocultar "Iniciar sesión"
+    if (btnAbrir) btnAbrir.style.display = "none";
+    if (btnCerrar) btnCerrar.style.display = "inline-block";
+
+    const spanUsuario = document.getElementById("usuario-activo");
+    if (spanUsuario) spanUsuario.innerText = usuario;
+  } else {
+    if (loginRegister) loginRegister.style.display = "block";
+    if (zonaUsuario) zonaUsuario.style.display = "none";
+
+    
+    if (btnAbrir) btnAbrir.style.display = "inline-block";
+    if (btnCerrar) btnCerrar.style.display = "none";
+  }
+
+  mostrarComentarios();
+}
+</script>
+
+ <script src="java.js"></script>
+</body>
+</html>
